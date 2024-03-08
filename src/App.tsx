@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import ExpensiveControlIndex from "./app/expensive-control/ExpensiveControlIndex";
 import { createContext, useState } from "react";
 import { Dark, Light } from "./styles/themes";
+import { AuthContextProvider } from "./context/AuthContext";
 export const ThemeContext = createContext({});
 function App() {
   const [theme, setTheme] = useState("light");
@@ -11,9 +12,11 @@ function App() {
     <>
       <ThemeContext.Provider value={{ setTheme }}>
         <ThemeProvider theme={themeStyled}>
-          <BrowserRouter>
-            <ExpensiveControlIndex />
-          </BrowserRouter>
+          <AuthContextProvider>
+            <BrowserRouter>
+              <ExpensiveControlIndex />
+            </BrowserRouter>
+          </AuthContextProvider>
         </ThemeProvider>
       </ThemeContext.Provider>
     </>

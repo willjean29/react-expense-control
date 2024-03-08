@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import Button from "../atoms/Button";
 import { Icons, Images, Pallete } from "../../../styles/variables";
+import { useAuthStore } from "../../../store/auth.store";
 const LoginTemplate = () => {
+  const { signWithGoogle } = useAuthStore();
   return (
     <Container>
       <div className="content-card">
@@ -12,7 +14,7 @@ const LoginTemplate = () => {
         <Title>Cerdyn</Title>
         <p className="phrase">Toma el control de tus 💵 gastos e 💰 ingresos</p>
         <ContainerBtn>
-          <Button title="Iniciar con google" onClick={() => {}} icon={<Icons.Google />} bgColor={Pallete.BrandSecundaryColor} />
+          <Button title="Iniciar con google" onClick={() => signWithGoogle()} icon={<Icons.Google />} bgColor={Pallete.BrandSecundaryColor} />
         </ContainerBtn>
       </div>
     </Container>
