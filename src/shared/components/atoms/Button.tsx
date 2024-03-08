@@ -28,6 +28,7 @@ const Container = styled.button<ContainerProps>`
   text-decoration: none;
   border: none;
   gap: 10px;
+  background-color: transparent;
   .btn {
     background-color: ${(props) => props.bgColor};
     padding: 0.6rem 1.3rem;
