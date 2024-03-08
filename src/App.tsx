@@ -1,12 +1,21 @@
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 import ExpensiveControlIndex from "./app/expensive-control/ExpensiveControlIndex";
-
+import { createContext, useState } from "react";
+import { Dark, Light } from "./styles/themes";
+export const ThemeContext = createContext({});
 function App() {
+  const [theme, setTheme] = useState("light");
+  const themeStyled = theme === "light" ? Light : Dark;
   return (
     <>
-      <BrowserRouter>
-        <ExpensiveControlIndex />
-      </BrowserRouter>
+      <ThemeContext.Provider value={{ setTheme }}>
+        <ThemeProvider theme={themeStyled}>
+          <BrowserRouter>
+            <ExpensiveControlIndex />
+          </BrowserRouter>
+        </ThemeProvider>
+      </ThemeContext.Provider>
     </>
   );
 }
