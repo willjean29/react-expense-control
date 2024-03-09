@@ -5,15 +5,15 @@ import ProtectedRoute from "../../shared/routes/ProtectedRoute";
 import { useAuthContext } from "../../context/AuthContext";
 
 const ExpensiveControlIndex = () => {
-  const context = useAuthContext();
-
+  const { user } = useAuthContext();
+  console.log(user);
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route
         path="/"
         element={
-          <ProtectedRoute user={context.user!} redirectTo="/login">
+          <ProtectedRoute user={user} redirectTo="/login">
             <Routes>
               <Route path="/" element={<HomePage />} />
             </Routes>
