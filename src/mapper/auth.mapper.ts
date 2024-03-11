@@ -1,5 +1,6 @@
 import { Session } from "@supabase/supabase-js";
-import { User } from "../context/AuthContext";
+import { User } from "../domain/auth.domain";
+
 export const getUserInfoMapper = (data: Session): User => {
   return {
     id: data.user?.id,

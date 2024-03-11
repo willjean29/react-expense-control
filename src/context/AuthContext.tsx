@@ -1,15 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase/supabase.config";
 import { getUserInfoMapper } from "../mapper/auth.mapper";
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  avatar: string;
-}
-export interface AuthState {
-  user: User | undefined;
-}
+import { AuthState, User } from "../domain/auth.domain";
 
 export const AuthContext = createContext({} as AuthState);
 

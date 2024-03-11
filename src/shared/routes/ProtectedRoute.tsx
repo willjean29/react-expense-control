@@ -1,7 +1,6 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { User } from "../../context/AuthContext";
-
+import { User } from "../../domain/auth.domain";
 interface ProtectedRouteProps {
   user: User | undefined;
   redirectTo: string;
