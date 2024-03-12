@@ -11,6 +11,7 @@ export const ThemeContext = createContext({});
 function App() {
   const [theme, setTheme] = useState("light");
   const themeStyled = theme === "light" ? Light : Dark;
+  const [isOpenSidebar, setisOpenSidebar] = useState(false);
   return (
     <>
       <ThemeContext.Provider value={{ setTheme }}>
@@ -19,7 +20,7 @@ function App() {
             <BrowserRouter>
               <Container>
                 <div className="content-sidebar">
-                  <Sidebar />
+                  <Sidebar isOpen={isOpenSidebar} setIsOpen={setisOpenSidebar} />
                 </div>
                 <div className="content-drawer">
                   <Drawer />
