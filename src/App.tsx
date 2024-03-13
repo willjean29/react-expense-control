@@ -9,7 +9,7 @@ import { Device } from "./styles/breakpoints";
 import Drawer from "./shared/components/organisms/drawer/Drawer";
 export const ThemeContext = createContext({});
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const themeStyled = theme === "light" ? Light : Dark;
   const [isOpenSidebar, setisOpenSidebar] = useState(false);
   return (

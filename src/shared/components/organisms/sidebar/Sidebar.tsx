@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Icons, Images, Spacing } from "../../../../styles/variables";
-import { DrawerData } from "../../../../utils/data";
+import { DrawerData, SettingsDrawerData } from "../../../../utils/data";
 import { NavLink } from "react-router-dom";
+import SidebarCard from "./SidebarCard";
 interface SidebarProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,6 +29,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
           </div>
         ))}
         <Divider />
+        {SettingsDrawerData.map((item, index) => (
+          <div className={`link-container ${isOpen ? "active" : ""}`} key={index}>
+            <NavLink to={item.to} className={({ isActive }) => `links ${isActive ? "active" : ""}`}>
+              <div className="link-icon">{item.icon}</div>
+              {isOpen && <span>{item.label}</span>}
+            </NavLink>
+          </div>
+        ))}
+        <Divider />
+        {isOpen && <SidebarCard />}
       </Container>
     </Main>
   );
@@ -44,6 +55,17 @@ const Container = styled.div<ContainerProps>`
   z-index: 100;
   height: 100%;
   width: 65px;
+  transition: 0.1s ease-in-out;
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.colorScroll};
+    border-radius: 10px;
+  }
   &.active {
     width: 220px;
   }
@@ -88,9 +110,11 @@ const Container = styled.div<ContainerProps>`
       background-color: ${({ theme }) => theme.bgAlpha};
     }
     .links {
+      justify-content: ${({ isOpen }) => (isOpen ? "flex-start" : "center")};
       display: flex;
       align-items: center;
       text-decoration: none;
+      transition: 0.3s ease-in-out;
       padding: calc(${Spacing.Spacing1} - 2px) 0;
       color: ${({ theme }) => theme.text};
       height: 60px;
