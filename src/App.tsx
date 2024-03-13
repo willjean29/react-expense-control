@@ -18,7 +18,7 @@ function App() {
         <ThemeProvider theme={themeStyled}>
           <AuthContextProvider>
             <BrowserRouter>
-              <Container>
+              <Container className={isOpenSidebar ? "active" : ""}>
                 <div className="content-sidebar">
                   <Sidebar isOpen={isOpenSidebar} setIsOpen={setisOpenSidebar} />
                 </div>
@@ -40,6 +40,8 @@ function App() {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  transition: 0.3s ease-in-out;
+  background-color: ${({ theme }) => theme.bgtotal};
   .content-sidebar {
     display: none;
   }
@@ -48,9 +50,11 @@ const Container = styled.div`
     position: absolute;
     left: 20px;
   }
-  background-color: ${({ theme }) => theme.bgtotal};
   @media ${Device.tablet} {
     grid-template-columns: 65px 1fr;
+    &.active {
+      grid-template-columns: 220px 1fr;
+    }
     .content-sidebar {
       display: initial;
     }

@@ -1,7 +1,7 @@
 import { CiPalette } from "react-icons/ci";
 import { BsEmojiLaughing } from "react-icons/bs";
 import { RiDeleteBin2Line, RiEditLine } from "react-icons/ri";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { RiVipCrownFill } from "react-icons/ri";
 import { BiUserCircle } from "react-icons/bi";
 import { RiSettings3Line } from "react-icons/ri";
@@ -35,6 +35,7 @@ export const Icons = {
   EditTable: RiEditLine,
   DeleteTable: RiDeleteBin2Line,
   ArrowDown: IoIosArrowDown,
+  ArrowLeft: IoIosArrowForward,
   Crown: RiVipCrownFill,
   User: BiUserCircle,
   Settings: RiSettings3Line,

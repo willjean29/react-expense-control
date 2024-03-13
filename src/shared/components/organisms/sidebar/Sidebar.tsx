@@ -1,15 +1,18 @@
 import styled from "styled-components";
-import { Images, Spacing } from "../../../../styles/variables";
+import { Icons, Images, Spacing } from "../../../../styles/variables";
 import { DrawerData } from "../../../../utils/data";
 import { NavLink } from "react-router-dom";
 interface SidebarProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
   return (
-    <Main>
-      <Container isOpen={isOpen}>
+    <Main isOpen={isOpen}>
+      <span onClick={() => setIsOpen(!isOpen)} className="btn-sidebar">
+        <Icons.ArrowLeft />
+      </span>
+      <Container isOpen={isOpen} className={isOpen ? "active" : ""}>
         <div className="content-logo">
           <div className="content-img">
             <img src={Images.Logo} alt="image icon" />
@@ -20,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
           <div className={`link-container ${isOpen ? "active" : ""}`} key={index}>
             <NavLink to={item.to} className={({ isActive }) => `links ${isActive ? "active" : ""}`}>
               <div className="link-icon">{item.icon}</div>
-              <span>{item.label}</span>
+              {isOpen && <span>{item.label}</span>}
             </NavLink>
           </div>
         ))}
@@ -40,6 +43,10 @@ const Container = styled.div<ContainerProps>`
   padding-top: 20px;
   z-index: 100;
   height: 100%;
+  width: 65px;
+  &.active {
+    width: 220px;
+  }
   .content-logo {
     display: flex;
     justify-content: center;
@@ -59,7 +66,7 @@ const Container = styled.div<ContainerProps>`
       }
     }
     h2 {
-      display: ${({ isOpen }) => (isOpen ? "none" : "block")};
+      display: ${({ isOpen }) => (isOpen ? "block" : "none")};
     }
     @keyframes floting {
       0% {
@@ -90,7 +97,7 @@ const Container = styled.div<ContainerProps>`
       .link-icon {
         display: flex;
         padding: ${Spacing.Spacing1} ${Spacing.Spacing2};
-        svg: {
+        svg {
           font-size: 25px;
         }
       }
@@ -112,7 +119,26 @@ const Container = styled.div<ContainerProps>`
   }
 `;
 
-const Main = styled.div``;
+const Main = styled.div<ContainerProps>`
+  .btn-sidebar {
+    position: fixed;
+    top: 70px;
+    left: 42px;
+    z-index: 200;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: ${(props) => props.theme.bgtgderecha};
+    box-shadow: 0 0 4px ${(props) => props.theme.bg3}, 0 0 7px ${(props) => props.theme.bg};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: ${(props) => props.theme.text};
+    transform: ${({ isOpen }) => (isOpen ? `translateX(162px) rotate(3.142rad)` : `initial`)};
+  }
+`;
 const Divider = styled.div`
   height: 1px;
   width: 100%;

@@ -1,4 +1,5 @@
 export const Light = {
+  rgbafondoanimado: "rgba(102, 102, 102, 0.2)",
   body: "#fff",
   text: "#202020",
   bodyRgba: "255, 255, 255",
@@ -16,14 +17,14 @@ export const Light = {
   navHeight: "5rem",
   whiteBg: "#DAC1FF",
   bg: "rgb(255,255,255)",
-  bgAlpha: "rgba(250,250,250,.3)",
+  bgAlpha: "#f2f2f2",
   bg2: "rgb(245,245,245)",
   bg3: "#fff",
   primary: "rgb(52, 131, 235)",
   bg4: "#eaeaea",
   bg5: "#9046FF",
   bgtotal: "#EDF3FB",
-  bgtgderecha: "#fff",
+  bgtgderecha: "#eeeeee",
   colorToggle: "#F9743B",
   translateToggle: "-12px",
 
@@ -31,8 +32,10 @@ export const Light = {
   slideroffset: "0.3em",
   sizeoficon: "1.4em",
   colorSubtitle: "#2c2c2c",
+  colorScroll: "#cac9ca",
 };
 export const Dark = {
+  rgbafondoanimado: "rgba(198, 198, 198, 0.2)",
   bgtgderecha: "#21252B",
   body: "#202020",
   text: "#fff",
@@ -65,4 +68,5 @@ export const Dark = {
   slideroffset: "0.3em",
   sizeoficon: "1.4em",
   colorSubtitle: "#b7b7b7",
+  colorScroll: "#434343",
 };
